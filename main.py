@@ -7,7 +7,7 @@ from dns import resolver, reversename
 from subprocess import Popen, PIPE
 import typing
 
-# Parses commandline agruments
+# Parses commandline arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("--target", "-t", type=str, required=True)
 parser.add_argument("--ports", "-p", type=str)
@@ -15,7 +15,6 @@ parser.add_argument("--quick", "-q", action="store_true")
 
 args = parser.parse_args()
 
-# Scanner class
 # All methods for scanning or detecting hosts are contained in this class
 class Scanner:
     def __init__(self):
@@ -53,7 +52,6 @@ class Scanner:
         states_dict = {host_states[i]: host_states[i + 1] for i in range(0, len(host_states), 2)}
         return states_dict
 
-    # Will only detect hosts currently discoverable with ping
     # Pings each IP address in ip_range, then performs a dns_lookup() of each host currently discoverable
     # Returns list of IPs and hostnames
     def quick_scan(self, ip_range: list) -> list:
